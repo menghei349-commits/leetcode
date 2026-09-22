@@ -92,7 +92,7 @@ Workflow 執行時會用這兩個 secrets 在 runner 上臨時產生 `config.jso
 
 ### 執行時機
 
-- 預設排程：每天 UTC 18:00（台灣時間 02:00），可自行修改 workflow 檔案裡的 cron 設定
+- 預設排程：每天 UTC 14:00（台灣時間 22:00），可自行修改 workflow 檔案裡的 cron 設定
 - 也可以到 **Actions → Sync LeetCode Solutions → Run workflow** 手動觸發一次
 
 ### 注意

@@ -2,7 +2,7 @@ name: Sync LeetCode Solutions
 
 on:
   schedule:
-    - cron: "0 18 * * *" # 每天 UTC 18:00（台灣時間 02:00）
+    - cron: "0 14 * * *" # 每天 UTC 14:00（台灣時間 22:00）
   workflow_dispatch: {}
 
 permissions:
