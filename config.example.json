@@ -1,0 +1,4 @@
+{
+  "leetcode_session": "在瀏覽器登入 leetcode.com 後，從 DevTools -> Application -> Cookies 複製 LEETCODE_SESSION 的值貼在這裡",
+  "csrf_token": "同上位置複製 csrftoken 的值貼在這裡"
+}

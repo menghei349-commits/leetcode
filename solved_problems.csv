@@ -1,0 +1,33 @@
+﻿frontend_id,title,title_slug,difficulty,tags
+9,Palindrome Number,palindrome-number,Easy,Math
+11,Container With Most Water,container-with-most-water,Medium,Array;Two Pointers;Greedy
+27,Remove Element,remove-element,Easy,Array;Two Pointers
+151,Reverse Words in a String,reverse-words-in-a-string,Medium,Two Pointers;String
+238,Product of Array Except Self,product-of-array-except-self,Medium,Array;Prefix Sum
+283,Move Zeroes,move-zeroes,Easy,Array;Two Pointers
+334,Increasing Triplet Subsequence,increasing-triplet-subsequence,Medium,Array;Greedy;Longest Increasing Subsequence
+345,Reverse Vowels of a String,reverse-vowels-of-a-string,Easy,Two Pointers;String
+392,Is Subsequence,is-subsequence,Easy,Two Pointers;String;Dynamic Programming
+443,String Compression,string-compression,Medium,Two Pointers;String
+605,Can Place Flowers,can-place-flowers,Easy,Array;Greedy
+643,Maximum Average Subarray I,maximum-average-subarray-i,Easy,Array;Sliding Window
+724,Find Pivot Index,find-pivot-index,Easy,Array;Prefix Sum
+1004,Max Consecutive Ones III,max-consecutive-ones-iii,Medium,Array;Binary Search;Sliding Window;Prefix Sum
+1071,Greatest Common Divisor of Strings,greatest-common-divisor-of-strings,Easy,Math;String;Euclidean Algorithm;Greatest Common Divisor
+1207,Unique Number of Occurrences,unique-number-of-occurrences,Easy,Array;Hash Table
+1317,Convert Integer to the Sum of Two No-Zero Integers,convert-integer-to-the-sum-of-two-no-zero-integers,Easy,Math
+1431,Kids With the Greatest Number of Candies,kids-with-the-greatest-number-of-candies,Easy,Array
+1456,Maximum Number of Vowels in a Substring of Given Length,maximum-number-of-vowels-in-a-substring-of-given-length,Medium,String;Sliding Window
+1493,Longest Subarray of 1's After Deleting One Element,longest-subarray-of-1s-after-deleting-one-element,Medium,Array;Dynamic Programming;Sliding Window
+1657,Determine if Two Strings Are Close,determine-if-two-strings-are-close,Medium,Hash Table;String;Sorting;Counting
+1679,Max Number of K-Sum Pairs,max-number-of-k-sum-pairs,Medium,Array;Hash Table;Two Pointers;Sorting
+1732,Find the Highest Altitude,find-the-highest-altitude,Easy,Array;Prefix Sum
+1768,Merge Strings Alternately,merge-strings-alternately,Easy,Two Pointers;String
+1935,Maximum Number of Words You Can Type,maximum-number-of-words-you-can-type,Easy,Hash Table;String
+2154,Keep Multiplying Found Values by Two,keep-multiplying-found-values-by-two,Easy,Array;Hash Table;Sorting;Simulation
+2215,Find the Difference of Two Arrays,find-the-difference-of-two-arrays,Easy,Array;Hash Table
+2352,Equal Row and Column Pairs,equal-row-and-column-pairs,Medium,Array;Hash Table;Matrix;Simulation
+2390,Removing Stars From a String,removing-stars-from-a-string,Medium,String;Stack;Simulation
+3190,Find Minimum Operations to Make All Elements Divisible by Three,find-minimum-operations-to-make-all-elements-divisible-by-three,Easy,Array;Math
+3512,Minimum Operations to Make Array Sum Divisible by K,minimum-operations-to-make-array-sum-divisible-by-k,Easy,Array;Math
+3516,Find Closest Person,find-closest-person,Easy,Math
