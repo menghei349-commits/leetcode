@@ -1,0 +1,56 @@
+name: Sync LeetCode Solutions
+
+on:
+  schedule:
+    - cron: "0 18 * * *" # 每天 UTC 18:00（台灣時間 02:00）
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: leetcode-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Create config.json from secrets
+        run: |
+          cat > config.json <<EOF
+          {
+            "leetcode_session": "${{ secrets.LEETCODE_SESSION }}",
+            "csrf_token": "${{ secrets.LEETCODE_CSRF_TOKEN }}"
+          }
+          EOF
+
+      - name: Run scraper
+        run: python leetcode_scraper.py
+
+      - name: Remove config.json
+        if: always()
+        run: rm -f config.json
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add solved_problems.csv solutions
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: sync LeetCode solutions [automated]"
+            git push
+          fi

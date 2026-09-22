@@ -75,6 +75,31 @@ solutions/
     └── 9-Palindrome-Number-Easy.cpp
 ```
 
+## GitHub Actions 定期自動同步
+
+`.github/workflows/leetcode-sync.yml` 會每天自動執行腳本，若有新解出的題目就自動 commit + push。
+
+### 設定 Secrets
+
+到 repo 頁面 **Settings → Secrets and variables → Actions → New repository secret**，新增兩組：
+
+| Secret 名稱 | 值 |
+| --- | --- |
+| `LEETCODE_SESSION` | 你的 `LEETCODE_SESSION` cookie 值 |
+| `LEETCODE_CSRF_TOKEN` | 你的 `csrftoken` cookie 值 |
+
+Workflow 執行時會用這兩個 secrets 在 runner 上臨時產生 `config.json`，跑完就刪除，不會留在 repo 或 log 裡。
+
+### 執行時機
+
+- 預設排程：每天 UTC 18:00（台灣時間 02:00），可自行修改 workflow 檔案裡的 cron 設定
+- 也可以到 **Actions → Sync LeetCode Solutions → Run workflow** 手動觸發一次
+
+### 注意
+
+- `LEETCODE_SESSION` 過期後（通常幾週），排程會因為登入失敗而執行失敗。GitHub 預設會寄信通知 repo 擁有者排程失敗，屆時回瀏覽器重新複製 cookie，更新對應的 Secret 值即可
+- Push 用的是 GitHub Actions 自動提供的 `GITHUB_TOKEN`，不需要額外設定個人 PAT
+
 ## 注意事項
 
 - `LEETCODE_SESSION` 通常幾週後會過期，重新執行若出現「登入失敗」訊息，回瀏覽器重新複製 cookie 貼回 `config.json` 即可
