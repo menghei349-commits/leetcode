@@ -75,9 +75,14 @@ solutions/
     └── 9-Palindrome-Number-Easy.cpp
 ```
 
-## GitHub Actions 定期自動同步
+## GitHub Actions 手動同步
 
-`.github/workflows/leetcode-sync.yml` 會每天自動執行腳本，若有新解出的題目就自動 commit + push。
+`.github/workflows/leetcode-sync.yml` 目前**沒有每天自動排程**，只能手動觸發（到 **Actions → Sync LeetCode Solutions → Run workflow**）。若要恢復每天自動執行，在 `on:` 底下加回：
+
+```yaml
+schedule:
+  - cron: "0 14 * * *" # 每天 UTC 14:00（台灣時間 22:00）
+```
 
 ### 設定 Secrets
 
@@ -89,11 +94,6 @@ solutions/
 | `LEETCODE_CSRF_TOKEN` | 你的 `csrftoken` cookie 值 |
 
 Workflow 執行時會用這兩個 secrets 在 runner 上臨時產生 `config.json`，跑完就刪除，不會留在 repo 或 log 裡。
-
-### 執行時機
-
-- 預設排程：每天 UTC 14:00（台灣時間 22:00），可自行修改 workflow 檔案裡的 cron 設定
-- 也可以到 **Actions → Sync LeetCode Solutions → Run workflow** 手動觸發一次
 
 ### 注意
 
