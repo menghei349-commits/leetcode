@@ -26,7 +26,7 @@ CONFIG_PATH = Path(__file__).parent / "config.json"
 SOLUTIONS_DIR = Path(__file__).parent / "solutions"
 CSV_PATH = Path(__file__).parent / "solved_problems.csv"
 
-REQUEST_DELAY_SEC = 0.6
+REQUEST_DELAY_SEC = 1.2
 
 LANG_EXTENSION = {
     "python": "py",
@@ -172,16 +172,24 @@ def fetch_accepted_submissions(session: requests.Session) -> dict:
     offset = 0
     page_size = 20
     last_key = ""
+    retries = 0
+    max_retries = 5
 
     while True:
         params = {"offset": offset, "limit": page_size}
         if last_key:
             params["lastkey"] = last_key
         resp = session.get(SUBMISSIONS_URL, params=params)
-        if resp.status_code == 429:
-            print("被限速，等待 5 秒後重試...")
-            time.sleep(5)
+        if resp.status_code in (429, 403):
+            retries += 1
+            if retries > max_retries:
+                print(f"連續 {max_retries} 次被擋 (HTTP {resp.status_code})，停止抓取提交紀錄。")
+                print(f"目前已取得 {len(latest_by_slug)} 題，先用這些結果繼續後續流程。")
+                break
+            print(f"被限速/擋下 (HTTP {resp.status_code})，等待 10 秒後重試 ({retries}/{max_retries})...")
+            time.sleep(10)
             continue
+        retries = 0
         resp.raise_for_status()
         data = resp.json()
         submissions = data.get("submissions_dump", [])
